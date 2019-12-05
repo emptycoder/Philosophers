@@ -10,7 +10,7 @@ namespace Lab2
         public const int ThreadsCount = 5;
         public const int TimeForWaiting = 0;
         public const int TimeForEating = 0;
-        public const int MaxWorkingTime = 1000;
+        public const int MaxWorkingTime = 2000;
 
         private static List<Alghoritm> alghoritms = 
             new List<Alghoritm>() {

@@ -10,14 +10,16 @@ namespace Lab2.Alghoritms
         public virtual string AlgName { get; }
         protected Table table;
 
-        public virtual void TryEating(Philosopher philosopher) { }
+        public virtual bool TryEating(Philosopher philosopher) { return false; }
 
         public void Thinking(Philosopher philosopher)
         {
             while (true)
             {
-                TryEating(philosopher);
-                Thread.Sleep(Program.TimeForWaiting);
+                if (TryEating(philosopher))
+                {
+                    Thread.Sleep(Program.TimeForWaiting);
+                }
             }
         }
 

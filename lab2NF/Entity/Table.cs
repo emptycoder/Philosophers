@@ -32,8 +32,9 @@ namespace Lab2.Entity
                 result.Append(philosopher.ToString());
             }
 
-            result.Append("\nCount of eaten food: ");
+            result.Append("Count of eaten food: ");
             result.Append(countOfEatenFood);
+            result.Append("\n");
 
             return result.ToString();
         }

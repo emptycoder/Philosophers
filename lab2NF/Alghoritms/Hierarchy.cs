@@ -7,7 +7,7 @@ namespace Lab2.Alghoritms
     {
         public override string AlgName { get; } = "Hierarchy table alghoritm";
 
-        public override void TryEating(Philosopher philosopher)
+        public override bool TryEating(Philosopher philosopher)
         {
             if (philosopher.leftFork.ForkNumber < philosopher.rightFork.ForkNumber)
             {
@@ -18,6 +18,7 @@ namespace Lab2.Alghoritms
                         philosopher.Eat();
                         Monitor.Exit(philosopher.rightFork);
                         Monitor.Exit(philosopher.leftFork);
+                        return true;
                     }
                 }
             }
@@ -30,9 +31,11 @@ namespace Lab2.Alghoritms
                         philosopher.Eat();
                         Monitor.Exit(philosopher.leftFork);
                         Monitor.Exit(philosopher.rightFork);
+                        return true;
                     }
                 }
             }
+            return false;
         }
     }
 }

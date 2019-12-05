@@ -6,12 +6,13 @@ namespace Lab2.Alghoritms
     {
         public override string AlgName { get; } = "Single philosopher alghoritm";
 
-        public override void TryEating(Philosopher philosopher)
+        public override bool TryEating(Philosopher philosopher)
         {
             lock(table)
             {
                 philosopher.Eat();
             }
+            return true;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Lab2.Alghoritms
     {
         public override string AlgName { get; } = "Own alghoritm";
 
-        public override void TryEating(Philosopher philosopher)
+        public override bool TryEating(Philosopher philosopher)
         {
             lock(table.forks)
             {
@@ -15,7 +15,9 @@ namespace Lab2.Alghoritms
                     philosopher.hasLeftFork = philosopher.leftFork.TakeFork();
                     philosopher.hasRightFork = philosopher.rightFork.TakeFork();
                     philosopher.Eat();
+                    return true;
                 }
+                return false;
             }
         }
     }

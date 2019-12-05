@@ -7,7 +7,7 @@ namespace Lab2.Alghoritms
     {
         public override string AlgName { get; } = "Smart table alghoritm";
 
-        public override void TryEating(Philosopher philosopher)
+        public override bool TryEating(Philosopher philosopher)
         {
             if (Monitor.TryEnter(table.forks))
             {
@@ -17,8 +17,11 @@ namespace Lab2.Alghoritms
                     {
                         lock (philosopher.rightFork)
                         {
+                            philosopher.leftFork.TakeFork();
+                            philosopher.rightFork.TakeFork();
                             Monitor.Exit(table.forks);
                             philosopher.Eat();
+                            return true;
                         }
                     }
                 }
@@ -27,6 +30,7 @@ namespace Lab2.Alghoritms
                     Monitor.Exit(table.forks);
                 }
             }
+            return false;
         }
     }
 }

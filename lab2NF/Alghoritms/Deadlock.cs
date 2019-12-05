@@ -6,7 +6,7 @@ namespace Lab2.Alghoritms
     {
         public override string AlgName { get; } = "Deadlock alghoritm";
 
-        public override void TryEating(Philosopher philosopher)
+        public override bool TryEating(Philosopher philosopher)
         {
             lock (philosopher.leftFork)
             {
@@ -29,6 +29,7 @@ namespace Lab2.Alghoritms
                     }
                 }
             }
+            return true;
         }
     }
 }

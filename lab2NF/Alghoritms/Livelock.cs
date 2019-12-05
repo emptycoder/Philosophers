@@ -7,21 +7,23 @@ namespace Lab2.Alghoritms
     {
         public override string AlgName { get; } = "Livelock alghoritm";
 
-        public override void TryEating(Philosopher philosopher)
+        public override bool TryEating(Philosopher philosopher)
         {
-            if (Monitor.TryEnter(philosopher.leftFork, 30))
+            if (Monitor.TryEnter(philosopher.leftFork))
             {
-                if (Monitor.TryEnter(philosopher.rightFork, 30))
+                if (Monitor.TryEnter(philosopher.rightFork))
                 {
                     philosopher.Eat();
                     Monitor.Exit(philosopher.rightFork);
                     Monitor.Exit(philosopher.leftFork);
+                    return true;
                 }
                 else
                 {
                     Monitor.Exit(philosopher.leftFork);
                 }
             }
+            return false;
         }
     }
 }
